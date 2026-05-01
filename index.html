@@ -4,165 +4,202 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ariefs Uni-sex Hair Salon | Athlone</title>
+    <!-- Tailwind for Professional Layout -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide for Professional Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-        @keyframes float3D {
-            0% { transform: translateY(0) rotateY(0) rotateZ(0); }
-            50% { transform: translateY(-50px) rotateY(180deg) rotateZ(10deg); }
-            100% { transform: translateY(0) rotateY(360deg) rotateZ(0); }
+        /* Custom Keyframes for 3D Motion & Stars */
+        @keyframes twinkle { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+        @keyframes floatScissor {
+            0% { transform: translateY(0) rotateY(0deg) rotateX(0deg); }
+            50% { transform: translateY(-40px) rotateY(180deg) rotateX(10deg); }
+            100% { transform: translateY(0) rotateY(360deg) rotateX(0deg); }
         }
-        .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d) infinite; }
-        .scissor-3d { animation: float3D 15s infinite linear; filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3)); }
-        html { scroll-behavior: smooth; }
-        body { background-color: black; color: white; font-family: sans-serif; margin: 0; }
+        
+        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d) infinite ease-in-out; }
+        .scissor-3d { animation: floatScissor 15s infinite linear; filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.4)); opacity: 0.15; pointer-events: none; }
+        .gold-glow { box-shadow: 0 0 50px rgba(212, 175, 55, 0.1); }
+        .nav-blur { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(12px); }
+        section { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
     </style>
 </head>
 <body>
 
-    <!-- Stars Background -->
-    <div id="star-container" class="fixed inset-0 z-0 pointer-events-none"></div>
+    <!-- Stars Background Layer -->
+    <div id="star-field" class="fixed inset-0 z-0"></div>
 
-    <!-- 3D Floating Scissors -->
-    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-1/4 left-1/4 text-yellow-600/20 scissor-3d">
-            <i data-lucide="scissors" style="width: 250px; height: 250px;"></i>
+    <!-- 3D Floating Motion Scissors -->
+    <div class="fixed inset-0 z-0 overflow-hidden flex items-center justify-around">
+        <div class="scissor-3d text-yellow-500">
+            <i data-lucide="scissors" style="width: 300px; height: 300px;"></i>
         </div>
-        <div class="absolute bottom-1/4 right-1/4 text-yellow-500/10 scissor-3d" style="animation-delay: -5s;">
-            <i data-lucide="scissors" style="width: 350px; height: 350px;"></i>
+        <div class="scissor-3d text-yellow-600" style="animation-delay: -7s;">
+            <i data-lucide="scissors" style="width: 450px; height: 450px;"></i>
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/20 h-20 flex items-center justify-between px-6 md:px-20">
-        <div class="flex items-center gap-2 font-bold uppercase tracking-widest text-white">
+    <!-- Header / Navbar -->
+    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-yellow-500/20 h-20 flex items-center justify-between px-6 md:px-20">
+        <div class="flex items-center gap-3 font-bold uppercase tracking-[0.2em] text-white">
             <i data-lucide="scissors" class="text-yellow-500"></i>
-            <span class="text-sm md:text-xl">Ariefs Uni-sex Salon</span>
+            <span class="text-xs md:text-lg">Ariefs Uni-sex Salon</span>
         </div>
-        <div class="flex gap-6 text-[10px] md:text-xs uppercase tracking-widest font-semibold">
-            <a href="#home" class="text-yellow-500">Home</a>
-            <a href="#pricing" class="text-gray-400 hover:text-white">Pricing</a>
-            <a href="#booking" class="text-gray-400 hover:text-white">Booking</a>
+        <div class="flex gap-4 md:gap-10 text-[10px] md:text-xs uppercase tracking-widest font-bold">
+            <a href="#home" class="text-yellow-500 hover:text-white transition-all underline-offset-8 hover:underline">Home</a>
+            <a href="#pricing" class="text-gray-400 hover:text-white transition-all underline-offset-8 hover:underline">Pricing</a>
+            <a href="#booking" class="text-gray-400 hover:text-white transition-all underline-offset-8 hover:underline">Booking</a>
         </div>
     </nav>
 
-    <!-- Content Sections -->
+    <!-- Content Wrapper -->
     <main class="relative z-10">
-        
+
         <!-- HOME SECTION -->
-        <section id="home" class="min-h-screen pt-40 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="flex-1">
-                <h1 class="text-6xl md:text-8xl font-bold uppercase tracking-tighter mb-6 leading-none">
-                    Ariefs <br><span class="text-yellow-500 italic">Uni-sex</span> Salon
+        <section id="home" class="px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+                    Ariefs <br><span class="text-yellow-500 italic">Uni-sex</span> <br>Salon
                 </h1>
-                <p class="text-gray-400 text-lg mb-10 max-w-lg leading-relaxed font-light">
-                    Premium styling and grooming for everyone. Over 15 years of precision in the heart of Athlone.
+                <p class="text-gray-400 text-lg md:text-xl mb-12 max-w-xl mx-auto md:mx-0 leading-relaxed font-light">
+                    Athlone's premier destination for executive grooming and specialized styling. 
+                    Experience the golden standard of precision.
                 </p>
-                <div class="space-y-6">
-                    <div class="flex items-center gap-4">
-                        <i data-lucide="map-pin" class="text-yellow-500"></i>
-                        <div>
-                            <p class="text-[10px] uppercase text-yellow-500 font-bold tracking-widest">Address</p>
-                            <p class="text-sm">169A Belgravia Road, Athlone, 7780</p>
-                        </div>
+                <div class="flex flex-col gap-6 items-center md:items-start text-sm">
+                    <div class="flex items-center gap-4 group">
+                        <div class="p-3 bg-yellow-500/10 rounded-full border border-yellow-500/20"><i data-lucide="map-pin" class="text-yellow-500"></i></div>
+                        <span class="text-gray-300">169A Belgravia Road, Athlone, 7780</span>
                     </div>
-                    <div class="flex items-center gap-4">
-                        <i data-lucide="clock" class="text-yellow-500"></i>
-                        <div>
-                            <p class="text-[10px] uppercase text-yellow-500 font-bold tracking-widest">Business Hours</p>
-                            <p class="text-sm">Mon - Sat: 09:00 - 18:00</p>
-                        </div>
+                    <div class="flex items-center gap-4 group">
+                        <div class="p-3 bg-yellow-500/10 rounded-full border border-yellow-500/20"><i data-lucide="clock" class="text-yellow-500"></i></div>
+                        <span class="text-gray-300">Mon - Sat: 09:00 AM - 18:00 PM</span>
                     </div>
                 </div>
             </div>
-            <div class="flex-1 rounded-3xl overflow-hidden border border-yellow-500/20 shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1000" alt="Salon" class="w-full h-[500px] object-cover">
+            <div class="flex-1 w-full max-w-lg">
+                <div class="rounded-[3rem] overflow-hidden border-2 border-yellow-500/30 gold-glow relative">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1000" alt="Barber" class="w-full h-[600px] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                </div>
             </div>
         </section>
 
         <!-- PRICING SECTION -->
-        <section id="pricing" class="min-h-screen pt-32 px-6 max-w-4xl mx-auto">
-            <h2 class="text-5xl font-bold uppercase mb-16 text-center">Service <span class="text-yellow-500">Menu</span></h2>
-            <div class="space-y-8">
-                <div class="flex justify-between items-end border-b border-white/10 pb-4">
-                    <span class="text-2xl">Executive Haircut</span>
-                    <span class="text-yellow-500 font-bold text-2xl">R 250</span>
+        <section id="pricing" class="px-6 max-w-4xl mx-auto flex flex-col justify-center">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-7xl font-black uppercase tracking-widest mb-4">Pricing <span class="text-yellow-500 font-serif italic">List</span></h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid gap-8">
+                <!-- Service Item -->
+                <div class="flex justify-between items-end border-b border-white/10 pb-6 group">
+                    <div class="flex flex-col">
+                        <span class="text-2xl md:text-3xl font-bold group-hover:text-yellow-500 transition-colors uppercase">Executive Haircut</span>
+                        <span class="text-gray-500 text-sm mt-1 uppercase tracking-widest">Consultation, Cut & Finish</span>
+                    </div>
+                    <span class="text-yellow-500 font-black text-3xl">R 250</span>
                 </div>
-                <div class="flex justify-between items-end border-b border-white/10 pb-4">
-                    <span class="text-2xl">Laser Hair Removal</span>
-                    <span class="text-yellow-500 font-bold text-2xl">R 450+</span>
+                <!-- Service Item -->
+                <div class="flex justify-between items-end border-b border-white/10 pb-6 group">
+                    <div class="flex flex-col">
+                        <span class="text-2xl md:text-3xl font-bold group-hover:text-yellow-500 transition-colors uppercase">Laser Hair Removal</span>
+                        <span class="text-gray-500 text-sm mt-1 uppercase tracking-widest">Professional Per-Area Service</span>
+                    </div>
+                    <span class="text-yellow-500 font-black text-3xl">R 450+</span>
                 </div>
-                <div class="flex justify-between items-end border-b border-white/10 pb-4">
-                    <span class="text-2xl">Full Body Massage</span>
-                    <span class="text-yellow-500 font-bold text-2xl">R 600</span>
+                <!-- Service Item -->
+                <div class="flex justify-between items-end border-b border-white/10 pb-6 group">
+                    <div class="flex flex-col">
+                        <span class="text-2xl md:text-3xl font-bold group-hover:text-yellow-500 transition-colors uppercase">Full Body Massage</span>
+                        <span class="text-gray-500 text-sm mt-1 uppercase tracking-widest">60 Min Deep Tissue Relaxation</span>
+                    </div>
+                    <span class="text-yellow-500 font-black text-3xl">R 600</span>
                 </div>
-                <div class="flex justify-between items-end border-b border-white/10 pb-4">
-                    <span class="text-2xl">Full Body Waxing</span>
-                    <span class="text-yellow-500 font-bold text-2xl">R 150+</span>
+                <!-- Service Item -->
+                <div class="flex justify-between items-end border-b border-white/10 pb-6 group">
+                    <div class="flex flex-col">
+                        <span class="text-2xl md:text-3xl font-bold group-hover:text-yellow-500 transition-colors uppercase">Full Body Waxing</span>
+                        <span class="text-gray-500 text-sm mt-1 uppercase tracking-widest">Smooth Skin Specialist</span>
+                    </div>
+                    <span class="text-yellow-500 font-black text-3xl">R 150+</span>
                 </div>
-                <div class="flex justify-between items-end border-b border-white/10 pb-4">
-                    <span class="text-2xl">Eyebrow Threading</span>
-                    <span class="text-yellow-500 font-bold text-2xl">R 80</span>
+                <!-- Service Item -->
+                <div class="flex justify-between items-end border-b border-white/10 pb-6 group">
+                    <div class="flex flex-col">
+                        <span class="text-2xl md:text-3xl font-bold group-hover:text-yellow-500 transition-colors uppercase">Eyebrow Threading</span>
+                        <span class="text-gray-500 text-sm mt-1 uppercase tracking-widest">Precision Facial Shaping</span>
+                    </div>
+                    <span class="text-yellow-500 font-black text-3xl">R 80</span>
                 </div>
             </div>
         </section>
 
         <!-- BOOKING SECTION -->
-        <section id="booking" class="min-h-screen pt-32 px-6 pb-20">
-            <div class="max-w-xl mx-auto bg-white/5 p-10 md:p-16 rounded-[3rem] border border-white/10 backdrop-blur-xl text-center">
-                <h2 class="text-4xl font-bold uppercase mb-4 text-white">Book Now</h2>
-                <p class="text-gray-500 mb-10">Send your request directly to our WhatsApp</p>
+        <section id="booking" class="px-6 flex items-center justify-center">
+            <div class="w-full max-w-2xl bg-white/5 border border-white/10 p-12 md:p-20 rounded-[4rem] backdrop-blur-3xl text-center gold-glow">
+                <h2 class="text-4xl md:text-5xl font-black uppercase mb-6">Request <span class="text-yellow-500 italic">Booking</span></h2>
+                <p class="text-gray-500 mb-12 uppercase tracking-[0.2em] text-xs">Instant confirmation via WhatsApp</p>
                 
-                <form onsubmit="sendWhatsApp(event)" class="space-y-4">
-                    <input id="name" type="text" placeholder="Your Name" required class="w-full bg-black/50 border border-white/10 rounded-2xl p-5 text-white outline-none focus:border-yellow-500 transition-all">
-                    <select id="service" required class="w-full bg-black/50 border border-white/10 rounded-2xl p-5 text-white outline-none focus:border-yellow-500 transition-all">
-                        <option value="">Select Service</option>
-                        <option value="Haircut">Haircut</option>
-                        <option value="Laser">Laser Hair Removal</option>
-                        <option value="Massage">Massage</option>
-                        <option value="Waxing">Waxing</option>
-                        <option value="Threading">Threading</option>
-                    </select>
-                    <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-6 rounded-2xl uppercase tracking-widest shadow-lg shadow-yellow-500/20 transition-all">
-                        Confirm via WhatsApp
+                <form onsubmit="handleWhatsApp(event)" class="space-y-6 text-left">
+                    <div>
+                        <label class="text-[10px] uppercase font-bold text-yellow-500 tracking-widest ml-1 mb-2 block">Full Name</label>
+                        <input id="form-name" type="text" placeholder="e.g. John Doe" required class="w-full bg-black/50 border border-white/10 rounded-2xl p-5 text-white outline-none focus:border-yellow-500 transition-all">
+                    </div>
+                    <div>
+                        <label class="text-[10px] uppercase font-bold text-yellow-500 tracking-widest ml-1 mb-2 block">Choose Treatment</label>
+                        <select id="form-service" required class="w-full bg-black/50 border border-white/10 rounded-2xl p-5 text-white outline-none focus:border-yellow-500 transition-all appearance-none">
+                            <option value="">Select a service...</option>
+                            <option value="Executive Haircut">Executive Haircut</option>
+                            <option value="Laser Hair Removal">Laser Hair Removal</option>
+                            <option value="Full Body Massage">Full Body Massage</option>
+                            <option value="Waxing">Waxing</option>
+                            <option value="Eyebrow Threading">Eyebrow Threading</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-black py-6 rounded-2xl uppercase tracking-[0.3em] transition-all transform active:scale-95 shadow-xl shadow-yellow-500/20">
+                        Confirm Appointment
                     </button>
                 </form>
             </div>
         </section>
     </main>
 
-    <footer class="relative z-10 py-12 text-center border-t border-white/5 text-gray-600 text-[10px] uppercase tracking-[0.3em]">
-        © 2024 Ariefs Uni-sex Salon | 169A Belgravia Road, Athlone | +27 81 539 1324
+    <!-- Footer -->
+    <footer class="relative z-10 py-16 text-center border-t border-white/5 text-gray-700 text-[10px] uppercase tracking-[0.5em]">
+        © 2024 Ariefs Uni-sex Salon | 169A Belgravia Road, Athlone | 7780 <br>
+        <span class="text-yellow-500/50 mt-4 block">+27 81 539 1324</span>
     </footer>
 
+    <!-- Scripts -->
     <script>
-        // Initialize Icons
+        // Start Icons
         lucide.createIcons();
 
-        // Generate Stars
-        const container = document.getElementById('star-container');
+        // Star Background Generation
+        const starsContainer = document.getElementById('star-field');
         for (let i = 0; i < 100; i++) {
             const star = document.createElement('div');
             star.className = 'star';
-            const size = Math.random() * 2 + 'px';
+            const size = Math.random() * 3 + 'px';
             star.style.width = size;
             star.style.height = size;
             star.style.left = Math.random() * 100 + '%';
             star.style.top = Math.random() * 100 + '%';
-            star.style.setProperty('--d', (Math.random() * 3 + 2) + 's');
-            container.appendChild(star);
+            star.style.setProperty('--d', (Math.random() * 4 + 2) + 's');
+            starsContainer.appendChild(star);
         }
 
-        // WhatsApp Function
-        function sendWhatsApp(e) {
+        // WhatsApp Logic
+        function handleWhatsApp(e) {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            const service = document.getElementById('service').value;
-            const message = `*New Appointment Request*%0A*Salon:* Ariefs Uni-sex Salon%0A*Name:* ${name}%0A*Service:* ${service}`;
-            window.open(`https://wa.me/27815391324?text=${message}`, '_blank');
+            const name = document.getElementById('form-name').value;
+            const service = document.getElementById('form-service').value;
+            const phoneNumber = "27815391324";
+            const message = `*NEW APPOINTMENT REQUEST*%0A%0A*Client:* ${name}%0A*Service:* ${service}%0A*Salon:* Ariefs Uni-sex Salon%0A*Area:* Athlone`;
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         }
     </script>
 </body>
-
-  </html>
+</html>
