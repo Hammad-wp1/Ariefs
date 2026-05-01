@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ariefs Uni-sex Hair Salon | Athlone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        @keyframes float3D {
+            0% { transform: translateY(0) rotateY(0) rotateZ(0); }
+            50% { transform: translateY(-50px) rotateY(180deg) rotateZ(10deg); }
+            100% { transform: translateY(0) rotateY(360deg) rotateZ(0); }
+        }
+        .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d) infinite; }
+        .scissor-3d { animation: float3D 15s infinite linear; filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3)); }
+        html { scroll-behavior: smooth; }
+        body { background-color: black; color: white; font-family: sans-serif; margin: 0; }
+    </style>
+</head>
+<body>
+
+    <!-- Stars Background -->
+    <div id="star-container" class="fixed inset-0 z-0 pointer-events-none"></div>
+
+    <!-- 3D Floating Scissors -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 text-yellow-600/20 scissor-3d">
+            <i data-lucide="scissors" style="width: 250px; height: 250px;"></i>
+        </div>
+        <div class="absolute bottom-1/4 right-1/4 text-yellow-500/10 scissor-3d" style="animation-delay: -5s;">
+            <i data-lucide="scissors" style="width: 350px; height: 350px;"></i>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/20 h-20 flex items-center justify-between px-6 md:px-20">
+        <div class="flex items-center gap-2 font-bold uppercase tracking-widest text-white">
+            <i data-lucide="scissors" class="text-yellow-500"></i>
+            <span class="text-sm md:text-xl">Ariefs Uni-sex Salon</span>
+        </div>
+        <div class="flex gap-6 text-[10px] md:text-xs uppercase tracking-widest font-semibold">
+            <a href="#home" class="text-yellow-500">Home</a>
+            <a href="#pricing" class="text-gray-400 hover:text-white">Pricing</a>
+            <a href="#booking" class="text-gray-400 hover:text-white">Booking</a>
+        </div>
+    </nav>
+
+    <!-- Content Sections -->
+    <main class="relative z-10">
+        
+        <!-- HOME SECTION -->
+        <section id="home" class="min-h-screen pt-40 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1">
+                <h1 class="text-6xl md:text-8xl font-bold uppercase tracking-tighter mb-6 leading-none">
+                    Ariefs <br><span class="text-yellow-500 italic">Uni-sex</span> Salon
+                </h1>
+                <p class="text-gray-400 text-lg mb-10 max-w-lg leading-relaxed font-light">
+                    Premium styling and grooming for everyone. Over 15 years of precision in the heart of Athlone.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="map-pin" class="text-yellow-500"></i>
+                        <div>
+                            <p class="text-[10px] uppercase text-yellow-500 font-bold tracking-widest">Address</p>
+                            <p class="text-sm">169A Belgravia Road, Athlone, 7780</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="clock" class="text-yellow-500"></i>
+                        <div>
+                            <p class="text-[10px] uppercase text-yellow-500 font-bold tracking-widest">Business Hours</p>
+                            <p class="text-sm">Mon - Sat: 09:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 rounded-3xl overflow-hidden border border-yellow-500/20 shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1000" alt="Salon" class="w-full h-[500px] object-cover">
+            </div>
+        </section>
+
+        <!-- PRICING SECTION -->
+        <section id="pricing" class="min-h-screen pt-32 px-6 max-w-4xl mx-auto">
+            <h2 class="text-5xl font-bold uppercase mb-16 text-center">Service <span class="text-yellow-500">Menu</span></h2>
+            <div class="space-y-8">
+                <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                    <span class="text-2xl">Executive Haircut</span>
+                    <span class="text-yellow-500 font-bold text-2xl">R 250</span>
+                </div>
+                <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                    <span class="text-2xl">Laser Hair Removal</span>
+                    <span class="text-yellow-500 font-bold text-2xl">R 450+</span>
+                </div>
+                <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                    <span class="text-2xl">Full Body Massage</span>
+                    <span class="text-yellow-500 font-bold text-2xl">R 600</span>
+                </div>
+                <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                    <span class="text-2xl">Full Body Waxing</span>
+                    <span class="text-yellow-500 font-bold text-2xl">R 150+</span>
+                </div>
+                <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                    <span class="text-2xl">Eyebrow Threading</span>
+                    <span class="text-yellow-500 font-bold text-2xl">R 80</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOKING SECTION -->
+        <section id="booking" class="min-h-screen pt-32 px-6 pb-20">
+            <div class="max-w-xl mx-auto bg-white/5 p-10 md:p-16 rounded-[3rem] border border-white/10 backdrop-blur-xl text-center">
+                <h2 class="text-4xl font-bold uppercase mb-4 text-white">Book Now</h2>
+                <p class="text-gray-500 mb-10">Send your request directly to our WhatsApp</p>
+                
+                <form onsubmit="sendWhatsApp(event)" class="space-y-4">
+                    <input id="name" type="text" placeholder="Your Name" required class="w-full bg-black/50 border border-white/10 rounded-2xl p-5 text-white outline-none focus:border-yellow-500 transition-all">
+                    <select id="service" required class="w-full bg-black/50 border border-white/10 rounded-2xl p-5 text-white outline-none focus:border-yellow-500 transition-all">
+                        <option value="">Select Service</option>
+                        <option value="Haircut">Haircut</option>
+                        <option value="Laser">Laser Hair Removal</option>
+                        <option value="Massage">Massage</option>
+                        <option value="Waxing">Waxing</option>
+                        <option value="Threading">Threading</option>
+                    </select>
+                    <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-6 rounded-2xl uppercase tracking-widest shadow-lg shadow-yellow-500/20 transition-all">
+                        Confirm via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="relative z-10 py-12 text-center border-t border-white/5 text-gray-600 text-[10px] uppercase tracking-[0.3em]">
+        © 2024 Ariefs Uni-sex Salon | 169A Belgravia Road, Athlone | +27 81 539 1324
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Generate Stars
+        const container = document.getElementById('star-container');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 2 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.setProperty('--d', (Math.random() * 3 + 2) + 's');
+            container.appendChild(star);
+        }
+
+        // WhatsApp Function
+        function sendWhatsApp(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const service = document.getElementById('service').value;
+            const message = `*New Appointment Request*%0A*Salon:* Ariefs Uni-sex Salon%0A*Name:* ${name}%0A*Service:* ${service}`;
+            window.open(`https://wa.me/27815391324?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+
+  </html>
